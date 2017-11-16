@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test client</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row jumbotron">
+      <p>Use buttons to generate html form, jquery, or axios get and post requests.</p>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-inline">
+          <h3>HTML form</h3>
+          <form action="/form" method="POST">
+            Name: <input type="text" name="name" value="Scout" class="form-control">
+            Breed: <input type="text" name="breed" value="Husky" class="form-control">
+            <input class="btn btn-primary" type="submit" value="POST" class="form-control">
+          </form>
+          <form action="/form" method="GET">
+            Name: <input type="text" name="name" value="Scout" class="form-control">
+            Breed: <input type="text" name="breed" value="Husky" class="form-control">
+            <input class="btn btn-primary" type="submit" value="GET" class="form-control">
+          </form>
+        </div>
+      </div>
+      <div class="col-sm">
+        <h3>Axios</h3>
+        <button 
+          onClick="getRequestAxios()"
+          class="btn btn-primary">GET</button>
+        <button 
+          onClick="postRequestAxios()"
+          class="btn btn-primary">POST</button>
+      </div>
+      <div class="col-sm">
+        <h3>jQuery</h3>
+        <button
+          onClick="getRequestjQuery()"
+          class="btn btn-primary">GET</button>
+        <button
+          onClick="postRequestjQuery()"
+          class="btn btn-primary">POST</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // https://api.jquery.com/jQuery.post/
+    // https://api.jquery.com/jquery.get/
+    const getRequestjQuery = () => {
+      $.get('/jquery', {
+        name: 'Scout',
+        breed: 'Husky'
+      });
+    };
+
+    const postRequestjQuery = () => {
+      $.post('/jquery', {
+        name: 'Scout',
+        breed: 'Husky'
+      });
+    };
+
+    const getRequestAxios = () => {
+      axios.get('/axios', {
+        name: 'Scout',
+        breed: 'Husky'
+      });
+    };
+
+    const postRequestAxios = () => {
+      axios.post('/axios', {
+        name: 'Scout',
+        breed: 'Husky'
+      });
+    };
+
+  </script>
+</body>
+</html>
